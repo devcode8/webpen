@@ -3,8 +3,8 @@ import { Box, styled } from "@mui/material";
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-// import LockIcon from "@mui/icons-material/Lock";
-// import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 import { Controlled as CodeEditor } from "react-codemirror2";
 
@@ -45,23 +45,23 @@ const Header = styled(Box)`
 
 const Editor = ({ heading, icon, color, value, onChange, mode }) => {
   const [open, setOpen] = useState(true);
-//   const [lock, setLock] = useState(false);
+  const [lock, setLock] = useState(false);
 
   const handleChange = (editor, data, value) => {
     onChange(value);
   };
-//   const handleLock = (e) => {
-//     setLockValue(value);
-//     setLock(!lock);
-//     if (lock) {
-//       Unlocknotify();
-//     } else {
-//       Locknotify();
-//     }
-//   };
+  const handleLock = (e) => {
+    setLockValue(value);
+    setLock(!lock);
+    if (lock) {
+      Unlocknotify();
+    } else {
+      Locknotify();
+    }
+  };
   const notify = () => toast("Copied Successfully🎉");
-//   const Locknotify = () => toast("Lock Successfully");
-//   const Unlocknotify = () => toast("Unlock Successfully");
+  const Locknotify = () => toast("Lock Successfully");
+  const Unlocknotify = () => toast("Unlock Successfully");
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(value);
@@ -111,11 +111,11 @@ const Editor = ({ heading, icon, color, value, onChange, mode }) => {
             gap: 10,
           }}
         >
-          {/* {lock ? (
+          {lock ? (
             <LockIcon onClick={handleLock} />
           ) : (
             <LockOpenIcon onClick={handleLock} />
-          )} */}
+          )}
           <ContentCopyIcon
             onClick={handleCopyCode}
             style={{
