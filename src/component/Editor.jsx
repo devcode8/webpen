@@ -64,6 +64,7 @@ const Editor = ({ heading, icon, color, value, onChange, mode }) => {
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(value);
+    // toaster 
     notify();
   };
 
