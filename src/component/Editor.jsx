@@ -51,7 +51,6 @@ const Editor = ({ heading, icon, color, value, onChange, mode }) => {
     onChange(value);
   };
   const handleLock = (e) => {
-    setLockValue(value);
     setLock(!lock);
     if (lock) {
       Unlocknotify();
